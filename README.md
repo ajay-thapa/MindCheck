@@ -1,50 +1,147 @@
-# Welcome to your Expo app 👋
+# MindCheck — React Native Assignment Project
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+MindCheck is a cross-platform React Native mobile app built as an assignment project focused on simple mental-health check-ins, journaling and local data persistence. This README explains the purpose, architecture, setup, development and submission notes for evaluators.
 
-## Get started
+## Project overview
+- Purpose: Provide users with daily mental-health check-ins, mood tracking, timestamped journal entries and quick access to resources. Built as an assignment to demonstrate React Native app architecture and implementation.
+- Platform: Plain React Native (not Expo) — Android and iOS support via native projects (android/ and ios/).
+- UX: Lightweight, privacy-first local storage, simple navigation and clear screens for onboarding, check-in, journal and settings.
 
-1. Install dependencies
+## Key features
+- Onboarding flow and lightweight user preferences (no external authentication required)
+- Daily check-in with mood selection, notes and simple scoring
+- Journal feature with create/edit/delete entries
+- Local persistent storage (AsyncStorage or SQLite abstraction)
+- Navigation using React Navigation (stack & tabs)
+- Reusable components: Buttons, Inputs, Cards, Header
+- Unit tests for core components/screens (Jest + React Native Testing Library)
 
-   ```bash
-   npm install
-   ```
+## Technology stack
+- React Native (CLI)
+- React Navigation
+- @react-native-async-storage/async-storage or react-native-sqlite-storage
+- Jest + React Native Testing Library
+- ESLint, Prettier
+- Optional: TypeScript (if the project codebase uses it)
 
-2. Start the app
+## Repository structure (example)
+- app/ or src/
+  - components/        — reusable UI components
+  - screens/           — screen components (Onboarding, Home, CheckIn, Journal, Settings)
+  - navigation/        — navigation stacks and route definitions
+  - services/          — storage, helpers, mock API
+  - hooks/             — custom hooks
+  - assets/            — images, fonts, screenshots
+- android/             — Android native project
+- ios/                 — iOS native project
+- package.json
+- README.md
 
-   ```bash
-   npx expo start
-   ```
+Adjust paths above to match the actual repo layout.
 
-In the output, you'll find options to open the app in a
+## Prerequisites (Linux + Android)
+- Node.js (LTS recommended)
+- npm or yarn
+- Java JDK (11+)
+- Android Studio + Android SDK + emulator or a physical Android device (USB debugging)
+- For iOS builds: Xcode (macOS only)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Install & run (Linux / Android)
+1. Install dependencies:
+    ```bash
+    npm install
+    ```
+2. Start Metro bundler:
+    ```bash
+    npx react-native start
+    ```
+3. Build & run on Android emulator or device:
+    ```bash
+    npx react-native run-android
+    ```
+4. If you change native modules, rebuild:
+    ```bash
+    npx react-native run-android
+    ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+iOS (macOS only):
 ```bash
-npm run reset-project
+npx pod-install ios
+npx react-native run-ios
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Converting from Expo (if applicable)
+If the project started as an Expo template but you need plain React Native:
+- Ensure android/ and ios/ folders exist (use react-native eject or recreate project).
+- Remove Expo-specific packages and APIs or replace with community equivalents.
+- Update app entry points and native config.
+- Reinstall native dependencies and run pods for iOS.
 
-## Learn more
+## Development tips
+- Follow existing component patterns; keep components small and testable.
+- Centralize persistence in services/storage.js or services/storage.ts so it can be swapped (AsyncStorage <-> SQLite).
+- Use React Navigation for adding screens; add new routes in navigation/index.js.
+- Handle offline-first flows (local-only data) and avoid sending user data externally for the assignment.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Testing
+- Unit tests with Jest:
+  ```bash
+  npm test
+  ```
+- Use React Native Testing Library for component behavior and interaction tests.
+- Add at least one test covering the CheckIn flow and one for the Journal entry CRUD.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Linting & Formatting
+- Lint:
+  ```bash
+  npm run lint
+  ```
+- Format:
+  ```bash
+  npm run format
+  ```
+If scripts are missing, add lint/format entries in package.json (ESLint + Prettier).
 
-## Join the community
+## Building release artifacts
+Android:
+- Generate signed APK/AAB from android/ using Gradle.
+- Follow React Native docs to create signing configs and upload artifacts.
 
-Join our community of developers creating universal apps.
+iOS:
+- Archive in Xcode and upload via App Store Connect (macOS required).
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Assignment checklist (suggested)
+- [ ] README describing app and run instructions
+- [ ] Working Android build
+- [ ] Demonstrable app features with screenshots/videos
+- [ ] Unit tests for core components
+- [ ] Linting and formatting configured
+
+## Screenshots & Demo
+- Add screenshots to assets/screenshots/
+- Link images in this README:
+  ```markdown
+  ![Home Screen](assets/screenshots/home.png)
+  ```
+
+## Known issues & TODO
+- List any incomplete features or known bugs here so evaluators know what to expect.
+
+## Submission tips
+- Include: screenshots, brief walkthrough steps, short screen-recording (optional).
+- Provide instructions for running the app on Android emulator and any special setup steps.
+- Mention any deviations from the assignment spec and why.
+
+## Contact / Author
+- Author: (Your name)
+- Student / Assignment ID: (Add your details here)
+- Repo location: /home/aashish/Desktop/ajay new mobile/MindCheck
+
+## License
+- Add a short license note or keep default. For assignments, MIT is common:
+  ```
+  MIT License
+  ```
+
+<!-- end of README -->
+// ...existing code...
