@@ -1,4 +1,4 @@
-# MindCheck — React Native Assignment Project
+# MindCheck — React Native Assignment Project thank
 
 MindCheck is a cross-platform React Native mobile app built as an assignment project focused on simple mental-health check-ins, journaling and local data persistence. This README explains the purpose, architecture, setup, development and submission notes for evaluators.
 
